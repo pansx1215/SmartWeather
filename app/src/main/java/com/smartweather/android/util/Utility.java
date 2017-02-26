@@ -1,7 +1,6 @@
 package com.smartweather.android.util;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.smartweather.android.db.City;
@@ -27,7 +26,6 @@ public class Utility {
     public static boolean handleProvinceResponse(String response){
         if (!TextUtils.isEmpty(response)){
             try {
-                Log.i("Utility","省份：不为空");
                 JSONArray allProvince = new JSONArray(response);
                 for (int i = 0; i < allProvince.length(); i++) {
                     JSONObject provinceObject = allProvince.getJSONObject(i);
@@ -88,6 +86,7 @@ public class Utility {
                     county.setWeatherId(countyObject.getString("weather_id"));
                     county.save();
                 }
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
